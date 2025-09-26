@@ -134,6 +134,9 @@
    pkgs.python3
    pkgs.gcc
 	 pkgs.zoom-us
+	 pkgs.mako
+	 pkgs.rofi
+	 pkgs-unstable.waybar
    pkgs-unstable.kanshi
 	 pkgs-unstable.vesktop
    pkgs-unstable.ghostty
