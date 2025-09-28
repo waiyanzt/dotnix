@@ -3,18 +3,7 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-  nixpkgs.config.allowUnfree = true;
-
-	# We need this so that we can use unfree pkgs for unstable as well.
-	nixpkgs.overlays = [
-		(self: super: {
-			unstable = super.unstable.extend (unstable-final: unstable-prev: {
-
-			});
-		})
-	];
-
-  # Bootloader.
+   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -24,43 +13,43 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-   pkgs.vim
-   pkgs.wget
-   pkgs.curl
-   pkgs.git
-   pkgs.fastfetch
-   pkgs.telegram-desktop
-   pkgs.wl-clipboard
-   pkgs.zoxide
-   pkgs.eza
-   pkgs.nodejs_20
-   pkgs.python3
-   pkgs.gcc
-	 pkgs.zoom-us
-	 pkgs.mako
-	 pkgs.rofi
-	 pkgs-unstable.waybar
-   pkgs-unstable.kanshi
-	 pkgs-unstable.vesktop
-   pkgs-unstable.ghostty
-   pkgs-unstable.neovim
-   pkgs-unstable.zed-editor
-   pkgs-unstable.protonup-qt
-   pkgs-unstable.brave
-	 pkgs-unstable.spotify
-	 pkgs.todoist-electron
+    pkgs.vim
+    pkgs.wget
+    pkgs.curl
+    pkgs.git
+    pkgs.fastfetch
+    pkgs.telegram-desktop
+    pkgs.wl-clipboard
+    pkgs.zoxide
+    pkgs.eza
+    pkgs.nodejs_20
+    pkgs.python3
+    pkgs.gcc
+    pkgs.zoom-us
+    pkgs.mako
+    pkgs.rofi
+    pkgs-unstable.waybar
+    pkgs-unstable.kanshi
+    pkgs-unstable.vesktop
+    pkgs-unstable.ghostty
+    pkgs-unstable.neovim
+    pkgs-unstable.zed-editor
+    pkgs-unstable.protonup-qt
+    pkgs-unstable.brave
+    pkgs-unstable.spotify
+    pkgs.todoist-electron
    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
   # Brave/chromium browsers dont launch without this
-	programs.chromium.enable = true;
+  programs.chromium.enable = true;
 
   programs.steam.enable = true;
   programs.fish.enable = true;
   users.users.ztzy.shell = pkgs.fish;
 
 	# Garbage collection
-	nix.gc = {
+  nix.gc = {
 		automatic = true;
 		dates = "weekly";
 		options = "--delete-older-than 30d";
