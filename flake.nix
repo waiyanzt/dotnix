@@ -2,7 +2,6 @@
   description = "My NixOS Flake-based Setup";
 
   inputs = {
-    # The primary source for all NixOS packages and modules
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -12,22 +11,39 @@
     };
   };
 
-  # This section defines what we are building with the ingredients.
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, ... }: {
-    # We are building a NixOS system configuration.
-    # 'nixos' is the hostname we will refer to it by. You can change this.
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, ... } @ inputs:
+  let
+    # 1. Define the system architecture for reuse.
+    system = "x86_64-linux";
+
+    # 2. Create pre-configured package sets.
+    #    We import nixpkgs with the config option already applied.
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    pkgs-unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+  in
+  {
     nixosConfigurations.nixos = nixpkgs-stable.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
+
+      # 3. Pass our pre-configured packages to our modules.
       specialArgs = {
-        pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; };
-        inputs = self.inputs;
+        inherit pkgs-unstable; # Pass the configured unstable set
+        inherit inputs;        # Pass all flake inputs
       };
 
-
-      # These are the modules that make up our system configuration.
+      # 4. Define all modules for the system here.
       modules = [
         ./hardware-configuration.nix
         ./configuration.nix
+        ./fonts.nix
       ];
     };
   };
