@@ -1,20 +1,72 @@
-# Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ./fonts.nix
-    ];
+  nix.settings.experimental-features = [ "nix-command" "flakes"];
+
+  nixpkgs.config.allowUnfree = true;
+
+	# We need this so that we can use unfree pkgs for unstable as well.
+	nixpkgs.overlays = [
+		(self: super: {
+			unstable = super.unstable.extend (unstable-final: unstable-prev: {
+
+			});
+		})
+	];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+# List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = [
+   pkgs.vim
+   pkgs.wget
+   pkgs.curl
+   pkgs.git
+   pkgs.fastfetch
+   pkgs.telegram-desktop
+   pkgs.wl-clipboard
+   pkgs.zoxide
+   pkgs.eza
+   pkgs.nodejs_20
+   pkgs.python3
+   pkgs.gcc
+	 pkgs.zoom-us
+	 pkgs.mako
+	 pkgs.rofi
+	 pkgs-unstable.waybar
+   pkgs-unstable.kanshi
+	 pkgs-unstable.vesktop
+   pkgs-unstable.ghostty
+   pkgs-unstable.neovim
+   pkgs-unstable.zed-editor
+   pkgs-unstable.protonup-qt
+   pkgs-unstable.brave
+	 pkgs-unstable.spotify
+	 pkgs.todoist-electron
+   inputs.zen-browser.packages.${pkgs.system}.default
+  ];
+
+  # Brave/chromium browsers dont launch without this
+	programs.chromium.enable = true;
+
+  programs.steam.enable = true;
+  programs.fish.enable = true;
+  users.users.ztzy.shell = pkgs.fish;
+
+	# Garbage collection
+	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 30d";
+	};
+
+  # programs.firefox.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -26,10 +78,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -57,7 +107,7 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -102,60 +152,6 @@
     #  thunderbird
     ];
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Brave doesnt launch without this
-	programs.chromium.enable = true;
-
-  # Fish shell
-  programs.fish.enable = true;
-  users.users.ztzy.shell = pkgs.fish;
-
-  # Install steam gaming.
-  programs.steam.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = [
-   pkgs.vim
-   pkgs.wget
-   pkgs.curl
-   pkgs.git
-   pkgs.fastfetch
-   pkgs.telegram-desktop
-   pkgs.wl-clipboard
-   pkgs.zoxide
-   pkgs.eza
-   pkgs.nodejs_20
-   pkgs.python3
-   pkgs.gcc
-	 pkgs.zoom-us
-	 pkgs.mako
-	 pkgs.rofi
-	 pkgs-unstable.waybar
-   pkgs-unstable.kanshi
-	 pkgs-unstable.vesktop
-   pkgs-unstable.ghostty
-   pkgs-unstable.neovim
-   pkgs-unstable.zed-editor
-   pkgs-unstable.protonup-qt
-   pkgs-unstable.brave
-	 pkgs.todoist-electron
-   inputs.zen-browser.packages.${pkgs.system}.default
-  ];
-
-	nix.gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 30d";
-	};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
