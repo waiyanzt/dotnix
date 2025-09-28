@@ -108,6 +108,9 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Brave doesnt launch without this
+	programs.chromium.enable = true;
+
   # Fish shell
   programs.fish.enable = true;
   users.users.ztzy.shell = pkgs.fish;
@@ -144,6 +147,7 @@
    pkgs-unstable.zed-editor
    pkgs-unstable.protonup-qt
    pkgs-unstable.brave
+	 pkgs.todoist-electron
    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
