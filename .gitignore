@@ -1,0 +1,5 @@
+dotfiles/nvim/undo
+dotfiles/nvim/sessions
+
+dotfiles/nvim/lazy-lock.json
+dotfiles/fish/fish_history
