@@ -40,6 +40,7 @@
     pkgs-unstable.protonup-qt
     pkgs-unstable.brave
     pkgs-unstable.spotify
+    pkgs-unstable.mesa
     pkgs-unstable.hyprlock
     pkgs-unstable.hypridle
    inputs.zen-browser.packages.${pkgs.system}.default
@@ -76,12 +77,7 @@
     # nvidia.modesetting.enable = true;
   };
 
-  hardware.vulkan = {
-    enable = true;
-    support32Bit = true;
-  };
-
-    # Enable the XDG portal service
+      # Enable the XDG portal service
     xdg.portal = {
       enable = true;
 
