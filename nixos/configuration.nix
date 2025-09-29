@@ -58,6 +58,7 @@
     enable = true; 
     xwayland.enable = true;
     package = pkgs-unstable.hyprland;
+    xdgDesktopPortal.enable = false;
     # only add nvidiaPatches if needed
     # nvidiaPatches = true;
   };
