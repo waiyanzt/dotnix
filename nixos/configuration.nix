@@ -76,9 +76,6 @@
     # nvidia.modesetting.enable = true;
   };
 
-  # Enable VA-API for hardware video acceleration
-  hardware.vaapi.enable = true;
-
   hardware.vulkan = {
     enable = true;
     support32Bit = true;
