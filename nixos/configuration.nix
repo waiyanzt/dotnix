@@ -59,7 +59,7 @@
     package = pkgs-unstable.hyprland;
     # only add nvidiaPatches if needed
     # nvidiaPatches = true;
-  }
+  };
 
   environment.sessionVariables = {
     # If your cursor becoms inivisble
