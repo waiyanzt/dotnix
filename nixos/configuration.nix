@@ -45,6 +45,8 @@
     pkgs-unstable.hyprlock
     pkgs-unstable.hypridle
     pkgs-unstable.swww
+    pkgs-unstable.pavucontrol
+    pkgs.networkmanagerapplet
    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
