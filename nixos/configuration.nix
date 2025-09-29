@@ -29,6 +29,8 @@
     pkgs.zoom-us
     pkgs.mako
     pkgs.rofi
+    pkgs.libnotify
+    pkgs.todoist-electron
     pkgs-unstable.waybar
     pkgs-unstable.kanshi
     pkgs-unstable.vesktop
@@ -38,7 +40,8 @@
     pkgs-unstable.protonup-qt
     pkgs-unstable.brave
     pkgs-unstable.spotify
-    pkgs.todoist-electron
+    pkgs-unstable.hyprlock
+    pkgs-unstable.hypridle
    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
@@ -49,6 +52,48 @@
   programs.fish.enable = true;
   users.users.ztzy.shell = pkgs.fish;
 
+  # Hyprland!! shoutout vaxry thats the GOAT
+  programs.hyprland = {
+    enable = true; 
+    xwayland.enable = true;
+    package = pkgs-unstable.hyprland;
+    # only add nvidiaPatches if needed
+    # nvidiaPatches = true;
+  }
+
+  environment.sessionVariables = {
+    # If your cursor becoms inivisble
+    # WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true; # For 32-bit games
+
+    # nvidia.modesetting.enable = true;
+  }
+
+  # Enable VA-API for hardware video acceleration
+  hardware.vaapi.enable = true;
+
+  hardware.vulkan = {
+    enable = true;
+    support32Bit = true;
+  };
+
+    # Enable the XDG portal service
+    xdg.portal = {
+      enable = true;
+
+      extraPortals = with pkgs; [
+       pkgs-unstable.xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+      ];
+    };
+  
 	# Garbage collection
   nix.gc = {
 		automatic = true;
@@ -99,9 +144,12 @@
   # You can disable this if you're only using the Wayland session.
   # services.xserver.enable = true;
 
+  # Bluetooth
+  services.blueman.enable = true;
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = false;
   services.power-profiles-daemon.enable = true;
 
   # Configure keymap in X11
@@ -116,13 +164,14 @@
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -138,7 +187,6 @@
     description = "Marcus";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
     ];
   };
