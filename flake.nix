@@ -42,9 +42,7 @@
       # 4. Define all modules for the system here.
       modules = [
 				{nixpkgs.pkgs = pkgs-stable; }
-        ./hardware-configuration.nix
-        ./configuration.nix
-        ./fonts.nix
+        ./nixos
       ];
     };
   };

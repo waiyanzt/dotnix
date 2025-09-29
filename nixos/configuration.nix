@@ -13,6 +13,7 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
+    pkgs.yazi
     pkgs.vim
     pkgs.wget
     pkgs.curl
