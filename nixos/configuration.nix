@@ -48,7 +48,9 @@
     pkgs-unstable.hypridle
     pkgs-unstable.swww
     pkgs-unstable.pavucontrol
+    pkgs-unstable.kdePackages.dolphin
     pkgs.networkmanagerapplet
+    pkgs-unstable.wlogout
    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
