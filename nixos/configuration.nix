@@ -44,6 +44,7 @@
     pkgs-unstable.mesa
     pkgs-unstable.hyprlock
     pkgs-unstable.hypridle
+    pkgs-unstable.swww
    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
