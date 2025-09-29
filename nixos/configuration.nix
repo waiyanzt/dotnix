@@ -74,7 +74,7 @@
     driSupport32Bit = true; # For 32-bit games
 
     # nvidia.modesetting.enable = true;
-  }
+  };
 
   # Enable VA-API for hardware video acceleration
   hardware.vaapi.enable = true;
