@@ -71,9 +71,6 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true; # For 32-bit games
-
     # nvidia.modesetting.enable = true;
   };
 
@@ -141,7 +138,11 @@
   services.blueman.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm {
+  enable = true;
+  wayland.enable = true;
+  };
+
   services.desktopManager.plasma6.enable = false;
   services.power-profiles-daemon.enable = true;
 
