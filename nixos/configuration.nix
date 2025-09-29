@@ -33,6 +33,7 @@
     pkgs.libnotify
     pkgs.todoist-electron
     pkgs.btop
+    pkgs.avizo
     pkgs-unstable.waybar
     pkgs-unstable.kanshi
     pkgs-unstable.vesktop
