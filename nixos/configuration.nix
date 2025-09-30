@@ -34,6 +34,7 @@
     pkgs.todoist-electron
     pkgs.btop
     pkgs.avizo
+    pkgs.vimix-cursors
     pkgs-unstable.waybar
     pkgs-unstable.kanshi
     pkgs-unstable.vesktop
