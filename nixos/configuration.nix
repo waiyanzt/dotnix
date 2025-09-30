@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes"];
@@ -13,7 +13,6 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-    pkgs.kitty
     pkgs.yazi
     pkgs.vim
     pkgs.wget
@@ -34,27 +33,27 @@
     pkgs.todoist-electron
     pkgs.btop
     pkgs.vimix-cursors
-    pkgs-unstable.swayosd
-    pkgs-unstable.waybar
-    pkgs-unstable.kanshi
-    pkgs-unstable.vesktop
-    pkgs-unstable.ghostty
-    pkgs-unstable.neovim
-    pkgs-unstable.zed-editor
-    pkgs-unstable.protonup-qt
-    pkgs-unstable.brave
-    pkgs-unstable.spotify
-    pkgs-unstable.mesa
-    pkgs-unstable.hyprlock
-    pkgs-unstable.hypridle
-    pkgs-unstable.swww
-    pkgs-unstable.pavucontrol
-    pkgs-unstable.kdePackages.dolphin
+    pkgs.swayosd
+    pkgs.waybar
+    pkgs.kanshi
+    pkgs.vesktop
+    pkgs.ghostty
+    pkgs.neovim
+    pkgs.zed-editor
+    pkgs.protonup-qt
+    pkgs.brave
+    pkgs.spotify
+    pkgs.mesa
+    pkgs.hyprlock
+    pkgs.hypridle
+    pkgs.swww
+    pkgs.hyprshot
+    pkgs.pavucontrol
+    pkgs.kdePackages.dolphin
     pkgs.networkmanagerapplet
-    pkgs-unstable.wlogout
-   inputs.zen-browser.packages.${pkgs.system}.default
+    pkgs.wlogout
+    inputs.zen-browser.packages.${pkgs.system}.default
   ];
-
   # Brave/chromium browsers dont launch without this
   programs.chromium.enable = true;
 
@@ -66,18 +65,15 @@
   programs.hyprland = {
     enable = true; 
     xwayland.enable = true;
-    package = pkgs-unstable.hyprland;
     # only add nvidiaPatches if needed
     # nvidiaPatches = true;
   };
 
   environment.sessionVariables = {
     # If your cursor becoms inivisble
-    WLR_NO_HARDWARE_CURSORS = "1";
+    # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
-    XCURSOR_THEME = "Vimix-white-cursors";
-    XCURSOR_SIZE = "24";
   };
 
   hardware.graphics = {
