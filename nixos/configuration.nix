@@ -76,6 +76,8 @@
     # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
+    XCURSOR_THEME = "Vimix-white-cursors";
+    XCURSOR_SIZE = "24";
   };
 
   hardware.graphics = {
