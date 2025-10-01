@@ -55,7 +55,6 @@
     pkgs.wlogout
     pkgs.playerctl
     pkgs.swaynotificationcenter
-    pkgs.blueman
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
   # Brave/chromium browsers dont launch without this
@@ -145,6 +144,7 @@
   # services.xserver.enable = true;
 
   # Bluetooth
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
