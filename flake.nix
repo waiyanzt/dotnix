@@ -16,7 +16,7 @@
     };
   in
   {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.thanatos= nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs;
