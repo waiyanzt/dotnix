@@ -14,6 +14,7 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.yazi
+    pkgs.starship
     pkgs.vim
     pkgs.wget
     pkgs.curl

@@ -1,0 +1,195 @@
+/* Gruvbox Dark color scheme */
+@define-color background #282828;
+@define-color foreground #ebdbb2;
+@define-color color0 #282828;
+@define-color color1 #cc241d;
+@define-color color2 #98971a;
+@define-color color3 #d79921;
+@define-color color4 #458588;
+@define-color color5 #b16286;
+@define-color color6 #689d6a;
+@define-color color7 #a89984;
+@define-color color8 #928374;
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+  font-size: 13px;
+  font-weight: 600;
+}
+
+window#waybar {
+  background-color: transparent;
+  color: @foreground;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#workspaces {
+  margin: 0 4px;
+}
+
+#workspaces button {
+  all: initial;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 5px;
+  margin: 4px 0;
+  color: @foreground;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  transition: all 200ms ease-in-out;
+}
+
+#workspaces button.active {
+  color: @color4;
+}
+
+#workspaces button.urgent {
+  color: @color1;
+}
+
+#workspaces button:hover {
+  color: @color6;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+/* Individual module styling */
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#clock,
+#custom-music,
+#custom-power,
+#custom-notification,
+#tray,
+#mpris,
+#window,
+#custom-spotify {
+  padding: 0 8px;
+  color: @foreground;
+  border-radius: 12px;
+  margin: 5px 2px;
+  background: transparent;
+  font-weight: 600;
+}
+
+/* Module-specific colors */
+#clock {
+  color: @foreground;
+}
+
+#pulseaudio {
+  color: @color5;
+}
+
+#pulseaudio.muted {
+  color: @color8;
+}
+
+#network {
+  color: @color4;
+}
+
+#network.disconnected {
+  color: @color8;
+}
+
+#battery {
+  color: @color2;
+}
+
+#battery.warning:not(.charging) {
+  color: @color1;
+}
+
+#custom-power {
+  color: @color1;
+  margin-right: 10px;
+}
+
+#bluetooth {
+  color: @color6;
+}
+
+#custom-notification {
+  color: @color3;
+}
+
+/* Container styling for modules */
+.modules-left {
+  background-color: alpha(@background, 0.95);
+  border: 1px solid @color8;
+  border-radius: 12px;
+  padding: 0 8px;
+  margin: 5px 0 5px 10px;
+}
+
+.modules-center {
+  background-color: alpha(@background, 0.95);
+  border: 1px solid @color4;
+  border-radius: 12px;
+  padding: 0 8px;
+  margin: 5px 0;
+}
+
+.modules-right {
+  background-color: alpha(@background, 0.95);
+  border: 1px solid @color8;
+  border-radius: 12px;
+  padding: 0 5px;
+  margin: 5px 10px 5px 0;
+}
+
+/* Tooltips */
+tooltip {
+  background: @background;
+  border: 1px solid @color4;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+tooltip label {
+  color: @foreground;
+  padding: 4px;
+}
+
+/* Tray styling */
+#tray {
+  margin: 5px 2px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* Custom module specific styling */
+#custom-spotify {
+  color: @color2;
+  padding-right: 10px;
+}
+
+#image {
+  margin: 4px 0 4px 10px;
+}
+
+#window {
+  color: @color7;
+  font-style: italic;
+}

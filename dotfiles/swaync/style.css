@@ -1,0 +1,85 @@
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+}
+
+.notification-row {
+  outline: none;
+}
+
+.notification {
+  background: #282828;
+  border: 2px solid #504945;
+  border-radius: 8px;
+  margin: 6px;
+  padding: 0;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 8px;
+  color: #ebdbb2;
+}
+
+.notification-default-action {
+  background: #282828;
+  color: #ebdbb2;
+}
+
+.notification-default-action:hover {
+  background: #3c3836;
+}
+
+.close-button {
+  background: #cc241d;
+  color: #ebdbb2;
+  border-radius: 6px;
+  margin: 6px;
+}
+
+.close-button:hover {
+  background: #fb4934;
+}
+
+.control-center {
+  background: #282828;
+  border: 2px solid #504945;
+  border-radius: 8px;
+  color: #ebdbb2;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.widget-title {
+  color: #fabd2f;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px;
+}
+
+.widget-title > button {
+  background: #504945;
+  border-radius: 6px;
+  color: #ebdbb2;
+}
+
+.widget-title > button:hover {
+  background: #665c54;
+}
+
+.widget-dnd {
+  background: #282828;
+  color: #ebdbb2;
+  margin: 8px;
+}
+
+.widget-dnd > switch {
+  background: #504945;
+  border-radius: 6px;
+}
+
+.widget-dnd > switch:checked {
+  background: #b8bb26;
+}
