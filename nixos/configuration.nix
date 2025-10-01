@@ -27,7 +27,7 @@
     pkgs.python3
     pkgs.gcc
     pkgs.zoom-us
-    pkgs.mako
+    # pkgs.mako
     pkgs.rofi
     pkgs.libnotify
     pkgs.todoist-electron
@@ -52,6 +52,9 @@
     pkgs.kdePackages.dolphin
     pkgs.networkmanagerapplet
     pkgs.wlogout
+    pkgs.playerctl
+    pkgs.swaynotificationcenter
+    pkgs.blueman
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
   # Brave/chromium browsers dont launch without this
