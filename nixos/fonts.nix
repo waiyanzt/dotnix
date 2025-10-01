@@ -14,7 +14,7 @@
     ];
     fontconfig = {
       defaultFonts = {
-        monospace = [ "Iosevka Term Nerd Font" "Noto Sans Mono CJK SC" ];
+        monospace = [ "JetBrainsMono Nerd Font" "Iosevka Term Nerd Font" "Noto Sans Mono CJK SC" ];
         sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
         serif = [ "Noto Serif" "Noto Serif CJK SC" ];
         emoji = [ "Noto Color Emoji" ];
