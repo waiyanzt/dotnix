@@ -224,6 +224,10 @@ require("lazy").setup({
       })
     end,
   },
+  {
+    "NvChad/nvim-colorizer.lua",
+    config = true,
+  },
 
   -- Status line
   {
