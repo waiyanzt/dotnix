@@ -54,8 +54,9 @@
     pkgs.wlogout
     pkgs.playerctl
     pkgs.swaynotificationcenter
+    pkgs.grim
+    pkgs.slurp
     pkgs.vscode-fhs
-    pkgs.flameshot
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
   # Brave/chromium browsers dont launch without this
