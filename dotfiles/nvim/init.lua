@@ -200,6 +200,10 @@ require("lazy").setup({
           cpp = { "clang_format" },
           rust = { "rustfmt" },
           lua = { "stylua" },
+          html = {'prettier'},
+          css = {'prettier'},
+          typescript = {'prettier'},
+          javascript = {'prettier'},
         },
         format_on_save = {
           timeout_ms = 500,

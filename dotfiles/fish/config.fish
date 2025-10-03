@@ -11,4 +11,6 @@ if status is-interactive
 
     abbr .. 'cd ..'
     abbr mkdir 'mkdir -p'
+    alias s='z'
 end
+

@@ -48,7 +48,6 @@
     pkgs.hyprlock
     pkgs.hypridle
     pkgs.swww
-    pkgs.hyprshot
     pkgs.pavucontrol
     pkgs.kdePackages.dolphin
     pkgs.networkmanagerapplet
@@ -56,6 +55,7 @@
     pkgs.playerctl
     pkgs.swaynotificationcenter
     pkgs.vscode-fhs
+    pkgs.flameshot
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
   # Brave/chromium browsers dont launch without this
