@@ -14,6 +14,7 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.yazi
+    pkgs.rustup
     pkgs.starship
     pkgs.vim
     pkgs.wget
@@ -28,7 +29,6 @@
     pkgs.python3
     pkgs.gcc
     pkgs.zoom-us
-    # pkgs.mako
     pkgs.rofi
     pkgs.libnotify
     pkgs.todoist-electron
