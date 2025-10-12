@@ -14,6 +14,7 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.yazi
+    pkgs.libreoffice-qt-fresh
     pkgs.rustup
     pkgs.starship
     pkgs.vim
