@@ -13,6 +13,8 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
+    pkgs.gnumake
+    pkgs.valgrind
     pkgs.yazi
     pkgs.unzip
     pkgs.libreoffice-qt-fresh

@@ -205,6 +205,9 @@ require("lazy").setup({
           typescript = {'prettier'},
           javascript = {'prettier'},
         },
+        formatters = {
+          clang_format = { command = "/home/ztzy/.nix-profile/bin/clang-format" },
+        },
         format_on_save = {
           timeout_ms = 500,
           lsp_fallback = true,
