@@ -14,6 +14,7 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.gnumake
+    pkgs.zip
     pkgs.valgrind
     pkgs.yazi
     pkgs.unzip
