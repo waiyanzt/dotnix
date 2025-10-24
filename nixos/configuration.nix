@@ -20,7 +20,6 @@
     pkgs.yazi
     pkgs.unzip
     pkgs.libreoffice-qt-fresh
-    pkgs.rustup
     pkgs.starship
     pkgs.vim
     pkgs.wget
