@@ -13,7 +13,7 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-    pkgs.xfce.thunar
+    pkgs.nautilus
     pkgs.google-chrome
     pkgs.imagemagick
     pkgs.gnumake
