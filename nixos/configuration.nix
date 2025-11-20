@@ -13,8 +13,6 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-    pkgs.nautilus
-    pkgs.google-chrome
     pkgs.imagemagick
     pkgs.gnumake
     pkgs.xournalpp
