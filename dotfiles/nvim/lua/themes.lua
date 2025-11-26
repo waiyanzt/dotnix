@@ -3,8 +3,11 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    opts = {},
-  },
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme rose-pine-moon")
+    end
+      },
 
   -- Zenbones (Commented out as in your original)
   -- {
@@ -19,33 +22,33 @@ return {
   -- },
 
   -- Gruvbox (Disabled auto-load so it doesn't conflict)
-  {
-      "ellisonleao/gruvbox.nvim",
+  -- {
+      -- "ellisonleao/gruvbox.nvim",
       -- priority = 1000, -- Lowered priority/commented out
       -- config = function()
       --     vim.cmd.colorscheme("gruvbox")
       -- end,
-  },
+  -- },
 
   -- Catppuccin
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = {
-      flavour = "mocha",
-    },
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   opts = {
+  --     flavour = "mocha",
+  --   },
+  -- },
 
-  -- BlackMetal
-  {
-    "metalelf0/black-metal-theme-neovim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("black-metal").setup({
-        theme = "darkthrone",
-      })
-      require("black-metal").load()
-    end,
-  },
+  -- -- BlackMetal
+  -- {
+  --   "metalelf0/black-metal-theme-neovim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("black-metal").setup({
+  --       theme = "darkthrone",
+  --     })
+  --     require("black-metal").load()
+  --   end,
+  -- },
 }
