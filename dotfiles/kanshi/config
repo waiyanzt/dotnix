@@ -2,12 +2,10 @@
 profile {
     output "eDP-1" disable
     output "HDMI-A-1" enable position 0,0 mode 3840x2160@120Hz
-    exec swww img /home/ztzy/Pictures/ronin.jpg
 }
 
 # Mobile profile: Laptop display is primary with correct scaling.
 profile {
     output "eDP-1" enable position 0,0 
     output "HDMI-A-1" disable
-    exec swww img /home/ztzy/Pictures/ronin.jpg
 }
