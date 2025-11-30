@@ -85,6 +85,10 @@
     # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
+    XDG_DATA_DIRS = [
+    "/home/ztzy/.local/share/flatpak/exports/share"
+    "/var/lib/flatpak/exports/share"
+    ];
   };
 
   hardware.graphics = {
@@ -98,7 +102,9 @@
 
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
+        xdg-desktip-portal-hyprland
       ];
+      config.common.default = "*";
     };
   
 	# Garbage collection
