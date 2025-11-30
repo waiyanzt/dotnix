@@ -102,7 +102,7 @@
 
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktip-portal-hyprland
+        xdg-desktop-portal-hyprland
       ];
       config.common.default = "*";
     };
