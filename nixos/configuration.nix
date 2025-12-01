@@ -14,6 +14,7 @@
   # $ nix search wget
   environment.systemPackages = [
     pkgs.imagemagick
+    pkgs.alsa-lib
     pkgs.gnumake
     pkgs.xournalpp
     pkgs.zip
