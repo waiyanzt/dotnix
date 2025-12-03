@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Fish shell - just enable it, customizations go in config.fish
-  programs.fish.enable = true;
   
   # Starship prompt
   programs.starship = {
