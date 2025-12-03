@@ -28,6 +28,8 @@
     ".config/swaync/config.json".source = ../.config/swaync/config.json;
     ".config/swaync/style.css".source = ../.config/swaync/style.css;
     
+    # ghsotty terminal (Linux - specific settings)
+    ".config/ghostty/config".source = ../.config/ghostty/config;
     # Wlogout
     ".config/wlogout/layout".source = ../.config/wlogout/layout;
     
