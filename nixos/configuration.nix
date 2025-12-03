@@ -65,7 +65,13 @@
     pkgs.slurp
     pkgs.vscode-fhs
     inputs.zen-browser.packages.${pkgs.system}.default
-  ];
+  ]; 
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   # Brave/chromium browsers dont launch without this
   programs.chromium.enable = true;
 
