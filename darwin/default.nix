@@ -43,8 +43,8 @@
     claude-code
   ];
   
-  # Enable Fish shell system-wide
-  programs.fish.enable = true;
+  # REMOVE THIS - home-manager will handle Fish
+  # programs.fish.enable = true;
   
   # Set Fish as default shell for your user
   users.users.morpheus = {
@@ -57,6 +57,9 @@
     enable = true;
     nix-direnv.enable = true;
   };
+  
+  # ADD THIS - required for system defaults to work
+  system.primaryUser = "morpheus";
   
   # Nix settings
   nix.settings = {

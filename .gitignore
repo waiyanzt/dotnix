@@ -1,5 +1,18 @@
-dotfiles/nvim/undo
-dotfiles/nvim/sessions
+# Neovim temporary files
+.config/nvim/undo/
+.config/nvim/sessions/
+.config/nvim/lazy-lock.json
 
-dotfiles/nvim/lazy-lock.json
-dotfiles/fish/fish_history
+# Fish shell history
+.config/fish/fish_history
+
+# macOS
+.DS_Store
+
+# Backup files
+*.backup
+*~
+
+# Nix build artifacts
+result
+result-*
