@@ -1,32 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  programs.fish = {
-    enable = true;
-    
-  };
-  
-  # Starship prompt
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-  
-  # Zoxide (smart cd)
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-  
-  # Direnv (per-project environments)
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-  
+  home.packages = with pkgs; [
+    starship
+    zoxide
+    eza 
+    direnv
+  ]
+
   # Dotfiles - symlinked automatically
   home.file = {
-    
+    ".config/fish/config.fish".source = ../.config/fish/config.fish;
+    ".config/fish/functions".source = ../.config/fish/functions;
+
     # Neovim configuration
     ".config/nvim/init.lua".source = ../.config/nvim/init.lua;
     ".config/nvim/lua/themes.lua".source = ../.config/nvim/lua/themes.lua;
