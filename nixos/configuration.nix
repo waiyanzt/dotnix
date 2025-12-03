@@ -70,6 +70,8 @@
   programs.chromium.enable = true;
 
   programs.steam.enable = true;
+  
+  programs.fish.enable = true;
   users.users.ztzy.shell = pkgs.fish;
 
   # Hyprland!! shoutout vaxry thats the GOAT
