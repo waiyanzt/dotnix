@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  programs.fish = {
+    enable = true;
+    
+  };
   
   # Starship prompt
   programs.starship = {
@@ -22,9 +26,6 @@
   
   # Dotfiles - symlinked automatically
   home.file = {
-    # Fish shell configuration
-    ".config/fish/config.fish".source = ../.config/fish/config.fish;
-    ".config/fish/fish_variables".source = ../.config/fish/fish_variables;
     
     # Neovim configuration
     ".config/nvim/init.lua".source = ../.config/nvim/init.lua;

@@ -43,7 +43,6 @@
     claude-code
   ];
   
-   programs.fish.enable = true;
   
   # Set Fish as default shell for your user
   users.users.morpheus = {
