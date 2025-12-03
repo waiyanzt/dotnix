@@ -45,7 +45,9 @@
   
   
   # Set Fish as default shell for your user
+  programs.fish.enable = true;
   users.users.morpheus = {
+    name = "morpheus";
     home = "/Users/morpheus";
     shell = pkgs.fish;
   };
