@@ -51,7 +51,6 @@
     pkgs.zed-editor
     pkgs.protonup-qt
     pkgs.brave
-    pkgs.spotify
     pkgs.mesa
     pkgs.hyprlock
     pkgs.hypridle
