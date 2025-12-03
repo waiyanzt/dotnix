@@ -43,8 +43,7 @@
     claude-code
   ];
   
-  # REMOVE THIS - home-manager will handle Fish
-  # programs.fish.enable = true;
+   programs.fish.enable = true;
   
   # Set Fish as default shell for your user
   users.users.morpheus = {
