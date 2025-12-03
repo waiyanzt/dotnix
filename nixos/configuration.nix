@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true
+
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
    # Bootloader.
@@ -35,7 +37,6 @@
     pkgs.nodejs_20
     pkgs.python3
     pkgs.gcc
-    pkgs.zoom-us
     pkgs.rofi
     pkgs.libnotify
     pkgs.todoist-electron
