@@ -6,7 +6,7 @@
     zoxide
     eza 
     direnv
-  ]
+  ];
 
   # Dotfiles - symlinked automatically
   home.file = {
