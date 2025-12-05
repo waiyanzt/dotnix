@@ -6,6 +6,7 @@
     zoxide
     eza 
     direnv
+    stylua
   ];
 
   # Dotfiles - symlinked automatically

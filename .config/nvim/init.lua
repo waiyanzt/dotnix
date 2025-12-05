@@ -117,21 +117,32 @@ require("lazy").setup({
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function()
       local lspconfig = require("lspconfig")
-      
-      -- LSP server configurations
-     vim.lsp.config.lua_ls = {
-			 settings = {
-				 Lua = {
-					 diagnostics = { globals = { "vim"} },
-					 completion = { callSnippet = "Replace" },
-				 },
-			 },
-		 }      
-		   -- Clangd
-			 vim.lsp.config.clangd = {
-				 cmd = {"clangd", "--background-index", "--clang-tidy"},
-			 }
 
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } },
+            completion = { callSnippet = "Replace" },
+          },
+        },
+      })
+      
+          
+		   -- Clangd
+       lspconfig.clangd.setup({
+         cmd = {"clangd", "--background-index", "--clang-tidy"},
+       })
+
+       -- rust
+       lspconfig.rust_analyzer.setup({
+         settings = {
+           ["rust-analyzer"] = {
+             cargo = { allFeatures = true},
+             checkOnSave = { command = "clippy"},
+           },
+         },
+       })
+			 
       -- LSP keymaps
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(ev)

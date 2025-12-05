@@ -24,7 +24,6 @@
     pkgs.yazi
     pkgs.unzip
     pkgs.libreoffice-qt-fresh
-    pkgs.starship
     pkgs.vim
     pkgs.wget
     pkgs.curl
@@ -32,8 +31,6 @@
     pkgs.fastfetch
     pkgs.telegram-desktop
     pkgs.wl-clipboard
-    pkgs.zoxide
-    pkgs.eza
     pkgs.nodejs_20
     pkgs.python3
     pkgs.gcc
