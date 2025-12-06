@@ -1,9 +1,8 @@
 # Docked profile: External monitor is primary.
 profile {
     output "eDP-1" disable
-    output "HDMI-A-1" enable position 0,0 mode 2560x1440@144Hz
+    output "HDMI-A-1" enable position 0,0 mode 3840x2160@120Hz scale 1.25
 }
-
 # Mobile profile: Laptop display is primary with correct scaling.
 profile {
     output "eDP-1" enable position 0,0 
