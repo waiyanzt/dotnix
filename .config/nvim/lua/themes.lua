@@ -1,14 +1,14 @@
-return {
-  -- Rose Pine
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    config = function()
-      vim.cmd("colorscheme rose-pine-moon")
-    end
-      },
-
+-- return {
+--   -- Rose Pine
+--   {
+--     "rose-pine/neovim",
+--     name = "rose-pine",
+--     priority = 1000,
+--     config = function()
+--       vim.cmd("colorscheme rose-pine-moon")
+--     end
+--       },
+--
   -- Zenbones (Commented out as in your original)
   -- {
   --   "mcchrish/zenbones.nvim",
