@@ -62,5 +62,8 @@ return {
   --     -- vim.cmd.colorscheme "eva01-LCL"
   --   end,
   -- }
-   { "savq/melange-nvim" }
+   { "savq/melange-nvim",
+      lazy = false,
+      priority = 1000,
+    }
 }
