@@ -1,16 +1,5 @@
-require('lazy').setup {
-  {
-    "hachy/eva01.vim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "eva01"
-      -- or
-      -- vim.cmd.colorscheme "eva01-LCL"
-    end,
-  }
-}
--- return {
+
+return {
 --   -- Rose Pine
 --   {
 --     "rose-pine/neovim",
@@ -63,4 +52,14 @@ require('lazy').setup {
   --     require("black-metal").load()
   --   end,
   -- },
--- }
+  {
+    "hachy/eva01.vim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "eva01"
+      -- or
+      -- vim.cmd.colorscheme "eva01-LCL"
+    end,
+  }
+}
