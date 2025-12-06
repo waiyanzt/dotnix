@@ -14,6 +14,7 @@
   home.file = {
     ".config/fish/config.fish".source = ../.config/fish/config.fish;
     # ".config/fish/functions".source = ../.config/fish/functions;
+    ".config/ghostty/config".source = ../.config/ghostty/config;
 
     # Neovim configuration
     ".config/nvim/init.lua".source = ../.config/nvim/init.lua;
