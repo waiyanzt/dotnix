@@ -7,6 +7,7 @@
     eza 
     direnv
     stylua
+    lua-language-server
   ];
 
   # Dotfiles - symlinked automatically
