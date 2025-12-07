@@ -15,6 +15,7 @@
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
+    pkgs.bitwarden-desktop
     pkgs.imagemagick
     pkgs.alsa-lib
     pkgs.gnumake
