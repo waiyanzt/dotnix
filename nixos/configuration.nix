@@ -18,6 +18,7 @@
     pkgs.imagemagick
     pkgs.alsa-lib
     pkgs.gnumake
+    pkgs.chromium
     pkgs.xournalpp
     pkgs.zip
     pkgs.valgrind
