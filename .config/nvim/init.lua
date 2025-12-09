@@ -126,6 +126,9 @@ require("lazy").setup({
 				},
 			}
 
+      -- Astro LSP
+      vim.lsp.config.astro = {}
+
 			-- Rust Analyzer
 			vim.lsp.config.rust_analyzer = {
 				settings = {
@@ -173,7 +176,7 @@ require("lazy").setup({
 			}
 
 			-- Enable all LSP servers
-			vim.lsp.enable({ "lua_ls", "rust_analyzer", "clangd", "ts_ls" })
+			vim.lsp.enable({ "lua_ls", "rust_analyzer", "clangd", "ts_ls", "astro" })
 
 			-- LSP keymaps
 			vim.api.nvim_create_autocmd("LspAttach", {
