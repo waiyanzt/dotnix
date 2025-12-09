@@ -21,7 +21,7 @@
 # # separated by equals signs.
 font-family = IosevkaTerm NF
 font-size = 13.5
-theme = Cyberdyne
+theme = Melange Dark 
 window-padding-balance = true
 resize-overlay = never
 

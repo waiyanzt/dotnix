@@ -247,6 +247,7 @@ require("lazy").setup({
 					css = { "prettier" },
 					typescript = { "prettier" },
 					javascript = { "prettier" },
+          astro = { "prettier" },
 				},
 				format_on_save = {
 					timeout_ms = 500,
@@ -271,7 +272,7 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "c", "cpp", "rust", "lua", "vim", "vimdoc", "typescript", "javascript" },
+				ensure_installed = { "c", "cpp", "rust", "lua", "vim", "vimdoc", "typescript", "javascript", "astro", "css", "html" },
 				highlight = { enable = true },
 				auto_install = true,
 			})
