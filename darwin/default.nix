@@ -31,7 +31,6 @@
     unzip
     
     # Dev tools
-    nodejs_20
     python3
     gcc
     
