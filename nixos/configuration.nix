@@ -174,7 +174,7 @@
     wayland.enable = true;
   };
 
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = false;
   services.power-profiles-daemon.enable = true;
 
   # Configure keymap in X11
