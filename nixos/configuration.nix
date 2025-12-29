@@ -73,7 +73,7 @@
     epiphany
     geary
     gnome-music
-  ]
+  ];
 
   programs.direnv = {
     enable = true;
