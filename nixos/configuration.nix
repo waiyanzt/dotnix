@@ -17,7 +17,6 @@
   environment.systemPackages = [
     pkgs.bitwarden-desktop
     pkgs.imagemagick
-    pkgs.alsa-lib
     pkgs.gnumake
     pkgs.google-chrome
     pkgs.xournalpp
@@ -79,14 +78,13 @@
   programs.fish.enable = true;
   users.users.ztzy.shell = pkgs.fish;
 
-  # Hyprland!! shoutout vaxry thats the GOAT
-  programs.hyprland = {
-    enable = true; 
-    xwayland.enable = true;
-    # only add nvidiaPatches if needed
-    # nvidiaPatches = true;
-  };
-
+  # programs.hyprland = {
+  #   enable = true; 
+  #   xwayland.enable = true;
+  #   # only add nvidiaPatches if needed
+  #   # nvidiaPatches = true;
+  # };
+  #
   environment.sessionVariables = {
     # If your cursor becoms inivisble
     # WLR_NO_HARDWARE_CURSORS = "1";
@@ -168,14 +166,20 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  # # Enable the KDE Plasma Desktop Environment.
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  # };
 
   services.desktopManager.plasma6.enable = false;
   services.power-profiles-daemon.enable = true;
+
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  }
 
   # Configure keymap in X11
   services.xserver.xkb = {
