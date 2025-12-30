@@ -27,11 +27,4 @@
     };
   };
 }
-```
 
-## Update Your Configs
-
-### Ghostty (`~/.config/ghostty/config`)
-```
-font-family = ZedMono Nerd Font
-font-size = 13.5
