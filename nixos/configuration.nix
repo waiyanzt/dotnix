@@ -14,7 +14,7 @@
     # GNOME apps 
     gnome-tweaks
     dconf-editor
-
+    vesktop
     # Extensions
     gnomeExtensions.appindicator
 
