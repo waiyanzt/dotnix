@@ -150,7 +150,7 @@
   };
 
   # Enable the COSMIC Login manager
-  services.displaymanager.cosmic-greeter.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
   # Enable the COSMIC desktip environment
   services.desktopManager.cosmic.enable = true;
