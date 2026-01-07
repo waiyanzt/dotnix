@@ -84,7 +84,7 @@
   programs.steam.enable = true;
   programs.fish.enable = true;
   
-  users.users.morpheus= {
+  users.users.ztzy= {
     isNormalUser = true;
     description = "Morpheus";
     shell = pkgs.fish;
@@ -94,7 +94,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_DATA_DIRS = [
-      "/home/morpheus/.local/share/flatpak/exports/share"
+      "/home/ztzy/.local/share/flatpak/exports/share"
       "/var/lib/flatpak/exports/share"
     ];
   };
@@ -157,7 +157,7 @@
 
   services.displayManager.autoLogin = {
     enable = true;
-    user = "morpheus";
+    user = "ztzy";
   };
 
   services.system76-scheduler.enable = true;
