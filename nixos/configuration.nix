@@ -12,8 +12,8 @@
   # System packages - CLEANED UP (removed Hyprland-specific stuff)
   environment.systemPackages = with pkgs; [
     # GNOME apps 
-    gnome-tweaks
-    dconf-editor
+    # gnome-tweaks
+    # dconf-editor
     vesktop
     # Extensions
     gnomeExtensions.appindicator
@@ -84,17 +84,17 @@
   programs.steam.enable = true;
   programs.fish.enable = true;
   
-  users.users.ztzy = {
+  users.users.morpheus= {
     isNormalUser = true;
-    description = "Marcus";
+    description = "Morpheus";
     shell = pkgs.fish;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev"];
   };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XDG_DATA_DIRS = [
-      "/home/ztzy/.local/share/flatpak/exports/share"
+      "/home/morpheus/.local/share/flatpak/exports/share"
       "/var/lib/flatpak/exports/share"
     ];
   };
@@ -149,19 +149,34 @@
     serviceConfig.Type = "oneshot";
   };
 
-  # GNOME Desktop
-  services.xserver = {
+  # Enable the COSMIC Login manager
+  services.displaymanager.cosmic-greeter.enable = true;
+
+  # Enable the COSMIC desktip environment
+  services.desktopManager.cosmic.enable = true;
+
+  services.displayManager.autoLogin = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
+    user = "morpheus";
   };
 
-  # Disable Plasma6 (already disabled, but being explicit)
-  services.desktopManager.plasma6.enable = false;
+  services.system76-scheduler.enable = true;
+
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+
+
+  # GNOME Desktop
+  # services.xserver = {
+  #   enable = true;
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome.enable = true;
+  #   xkb = {
+  #     layout = "us";
+  #     variant = "";
+  #   };
+  # };
+
+  
   
   # Services
   services.blueman.enable = true;
@@ -205,7 +220,6 @@
 
   users.groups.plugdev = {};
   
-  users.users.YOUR_USERNAME.extraGroups = [ "plugdev" ];
   # GPG
   programs.gnupg.agent = {
     enable = true;
