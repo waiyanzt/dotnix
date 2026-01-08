@@ -19,7 +19,7 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = IosevkaTerm NF
+font-family = Lilex
 font-size = 13.5
 theme = Melange Dark 
 window-padding-balance = true
