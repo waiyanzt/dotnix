@@ -2,141 +2,130 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-   # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-# List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = [
-    pkgs.bitwarden-desktop
-    pkgs.imagemagick
-    pkgs.alsa-lib
-    pkgs.gnumake
-    pkgs.google-chrome
-    pkgs.xournalpp
-    pkgs.zip
-    pkgs.valgrind
-    pkgs.yazi
-    pkgs.unzip
-    pkgs.libreoffice-qt-fresh
-    pkgs.vim
-    pkgs.wget
-    pkgs.curl
-    pkgs.git
-    pkgs.fastfetch
-    pkgs.telegram-desktop
-    pkgs.wl-clipboard
-    pkgs.nodejs_20
-    pkgs.python3
-    pkgs.gcc
-    pkgs.rofi
-    pkgs.libnotify
-    pkgs.todoist-electron
-    pkgs.btop
-    pkgs.vimix-cursors
-    pkgs.swayosd
-    pkgs.waybar
-    pkgs.kanshi
-    pkgs.vesktop
-    pkgs.ghostty
-    pkgs.neovim
-    pkgs.zed-editor
-    pkgs.protonup-qt
-    pkgs.brave
-    pkgs.mesa
-    pkgs.hyprlock
-    pkgs.hypridle
-    pkgs.swww
-    pkgs.pavucontrol
-    pkgs.kdePackages.dolphin
-    pkgs.networkmanagerapplet
-    pkgs.wlogout
-    pkgs.playerctl
-    pkgs.swaynotificationcenter
-    pkgs.grim
-    pkgs.slurp
-    pkgs.vscode-fhs
+  # System packages - CLEANED UP (removed Hyprland-specific stuff)
+  environment.systemPackages = with pkgs; [
+    # GNOME apps 
+    gnome-tweaks
+    dconf-editor
+    vesktop
+    # Extensions
+    gnomeExtensions.appindicator
+
+    # Productivity apps
+    bitwarden-desktop
+    libreoffice-qt-fresh
+    xournalpp
+    telegram-desktop
+    todoist-electron
+    
+    # Browsers
+    google-chrome
+    brave
     inputs.zen-browser.packages.${pkgs.system}.default
+    
+    # Development tools
+    git
+    vim
+    neovim
+    zed-editor
+    vscode-fhs
+    ghostty
+    
+    # Dev languages/tools
+    nodejs_20
+    python3
+    gcc
+    gnumake
+    valgrind
+    
+    # CLI utilities
+    wget
+    curl
+    fastfetch
+    btop
+    yazi
+    zip
+    unzip
+    
+    # System utilities
+    wl-clipboard
+    imagemagick
+    mesa
+    vimix-cursors
+    
+    # Gaming
+    protonup-qt
+    
+    # kdePackages.dolphin  
+    
+    # pavucontrol  # Volume control GUI
   ]; 
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    epiphany
+    geary
+    gnome-music
+  ];
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
 
-  # Brave/chromium browsers dont launch without this
   programs.chromium.enable = true;
-
   programs.steam.enable = true;
-  
   programs.fish.enable = true;
-  users.users.ztzy.shell = pkgs.fish;
-
-  # Hyprland!! shoutout vaxry thats the GOAT
-  programs.hyprland = {
-    enable = true; 
-    xwayland.enable = true;
-    # only add nvidiaPatches if needed
-    # nvidiaPatches = true;
+  
+  users.users.ztzy = {
+    isNormalUser = true;
+    description = "Marcus";
+    shell = pkgs.fish;
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   environment.sessionVariables = {
-    # If your cursor becoms inivisble
-    # WLR_NO_HARDWARE_CURSORS = "1";
-    # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
     XDG_DATA_DIRS = [
-    "/home/ztzy/.local/share/flatpak/exports/share"
-    "/var/lib/flatpak/exports/share"
+      "/home/ztzy/.local/share/flatpak/exports/share"
+      "/var/lib/flatpak/exports/share"
     ];
   };
 
-  hardware.graphics = {
+  hardware.graphics.enable = true;
+  hardware.bluetooth.enable = true;
+
+  # XDG portal - GNOME uses its own, but keeping GTK is fine
+  xdg.portal = {
     enable = true;
-    # nvidia.modesetting.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      # xdg-desktop-portal-hyprland  # REMOVE - not needed for GNOME
+    ];
+    config.common.default = "*";
+  };
+  
+  # Garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
   };
 
-      # Enable the XDG portal service
-    xdg.portal = {
-      enable = true;
-
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
-      ];
-      config.common.default = "*";
-    };
-  
-	# Garbage collection
-  nix.gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 30d";
-	};
-
-  # programs.firefox.enable = true;
-
-  networking.hostName = "thanatos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  # Networking
+  networking.hostName = "thanatos";
   networking.networkmanager.enable = true;
 
+  # Locale
   time.timeZone = "America/Los_Angeles";
-
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -149,9 +138,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Battery optimization for ThinkPad
   systemd.services.battery-charge-threshold = {
     description = "Battery config";
-
     script = ''
       echo 85 > /sys/class/power_supply/BAT0/charge_control_end_threshold
       echo 80 > /sys/class/power_supply/BAT0/charge_control_start_threshold
@@ -160,89 +149,68 @@
     serviceConfig.Type = "oneshot";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  # services.xserver.enable = true;
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm = {
+  # GNOME Desktop
+  services.xserver = {
     enable = true;
-    wayland.enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
-  services.desktopManager.plasma6.enable = true;
+  # Disable Plasma6 (already disabled, but being explicit)
+  services.desktopManager.plasma6.enable = false;
+  
+  # Services
+  services.blueman.enable = true;
   services.power-profiles-daemon.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   services.flatpak.enable = true;
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.openssh.enable = true;
 
-  # Enable sound with pipewire.
+  # Audio - PipeWire
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # udev rules for flashing zsa moonlander
+  services.udev.extraRules = ''
+  # Rules for Oryx web flashing and live training
+    KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ztzy = {
-    isNormalUser = true;
-    description = "Marcus";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    # Rule for all ZSA keyboards
+    SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
+    
+    # Wally Flashing rules for the Ergodox EZ
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+    KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+    
+    # Keymapp / Wally Flashing rules for the Moonlander and Planck EZ
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
+    
+    # Keymapp Flashing rules for the Voyager
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+  '';
+
+  users.groups.plugdev = {};
+  
+  users.users.YOUR_USERNAME.extraGroups = [ "plugdev" ];
+  # GPG
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
-
+  system.stateVersion = "25.05";
 }
