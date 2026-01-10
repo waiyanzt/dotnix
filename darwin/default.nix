@@ -14,7 +14,6 @@
     wget
     vim
     neovim
-    aws-sam-cli
     
     # File management and navigation
     yazi
