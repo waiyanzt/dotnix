@@ -19,8 +19,8 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = ZedMono Nerd Font
-font-size = 12.5
+font-family = Lilex
+font-size = 13
 theme = Melange Dark 
 window-padding-balance = true
 resize-overlay = never
