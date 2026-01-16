@@ -90,7 +90,7 @@
     isNormalUser = true;
     description = "Morpheus";
     shell = pkgs.fish;
-    extraGroups = [ "openrazer networkmanager" "wheel" "plugdev"];
+    extraGroups = [ "openrazer" "networkmanager" "wheel" "plugdev"];
   };
 
   environment.sessionVariables = {
