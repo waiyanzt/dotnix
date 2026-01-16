@@ -11,6 +11,7 @@
 
   # System packages - CLEANED UP (removed Hyprland-specific stuff)
   environment.systemPackages = with pkgs; [
+
     # GNOME apps 
     # gnome-tweaks
     # dconf-editor
@@ -62,7 +63,8 @@
     
     # Gaming
     protonup-qt
-    
+    polychromatic
+
     # kdePackages.dolphin  
     
     # pavucontrol  # Volume control GUI
@@ -88,7 +90,7 @@
     isNormalUser = true;
     description = "Morpheus";
     shell = pkgs.fish;
-    extraGroups = [ "networkmanager" "wheel" "plugdev"];
+    extraGroups = [ "openrazer networkmanager" "wheel" "plugdev"];
   };
 
   environment.sessionVariables = {
@@ -101,6 +103,9 @@
 
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
+
+  # to configure razer mouse and kb
+  hardware.enable.openrazer = true;
 
   # XDG portal - GNOME uses its own, but keeping GTK is fine
   xdg.portal = {
