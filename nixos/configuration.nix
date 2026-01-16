@@ -105,7 +105,7 @@
   hardware.bluetooth.enable = true;
 
   # to configure razer mouse and kb
-  hardware.enable.openrazer = true;
+  hardware.openrazer.enable = true;
 
   # XDG portal - GNOME uses its own, but keeping GTK is fine
   xdg.portal = {
