@@ -35,7 +35,7 @@
     git
     vim
     neovim
-    zed-editor
+    zed-editor-fhs
     vscode-fhs
     ghostty
     
