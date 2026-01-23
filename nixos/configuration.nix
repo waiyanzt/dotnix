@@ -42,6 +42,7 @@
     # Dev languages/tools
     nodejs_20
     python3
+    python313Packages.matplotlib
     gcc
     gnumake
     valgrind
