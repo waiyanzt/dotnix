@@ -3,5 +3,6 @@
     ./configuration.nix
     ./hardware-configuration.nix
     ./fonts.nix
+    ./defaults.nix
   ];
 }

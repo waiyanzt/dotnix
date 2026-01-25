@@ -166,6 +166,10 @@
     user = "ztzy";
   };
 
+  # fixing keyring login issues by using gnome DE's
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.cosmic-greeter-enableGnomeKeyring = true;
+
   services.system76-scheduler.enable = true;
 
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
