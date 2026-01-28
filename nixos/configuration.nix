@@ -182,7 +182,7 @@
     dbus-update-activation-environment = "--all";
     # Force Zed and others to use the gnome-keyring backend
     PYTHON_KEYRING_BACKEND = "keyring.backends.libsecret.Keyring";
-  }
+  };
 
 
   # GNOME Desktop
