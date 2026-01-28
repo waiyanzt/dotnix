@@ -164,9 +164,15 @@
   # Ensure the DBus service for secrets is explicitly available
   services.dbus.packages = [ pkgs.gcr ];
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "ztzy";
+  services.displayManager = {
+    autoLogin = {
+      enable = true;
+      user = "ztzy";
+    }; 
+
+    sessionCommands = ''
+    ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
+    '';
   };
 
   # fixing keyring login issues by using gnome DE's
@@ -177,13 +183,6 @@
   security.pam.services.cosmic-greeter.enableGnomeKeyring = true;
 
   services.system76-scheduler.enable = true;
-
-  environment.sessionVariables = {
-    dbus-update-activation-environment = "--all";
-    # Force Zed and others to use the gnome-keyring backend
-    PYTHON_KEYRING_BACKEND = "keyring.backends.libsecret.Keyring";
-  };
-
 
   # GNOME Desktop
   # services.xserver = {
@@ -196,7 +195,6 @@
   #   };
   # };
 
-  
   
   # Services
   services.blueman.enable = true;
