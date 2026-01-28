@@ -161,6 +161,9 @@
   # Enable the COSMIC desktip environment
   services.desktopManager.cosmic.enable = true;
 
+  # Ensure the DBus service for secrets is explicitly available
+  services.dbus.packages = [ pkgs.gcr ];
+
   services.displayManager.autoLogin = {
     enable = true;
     user = "ztzy";
@@ -168,11 +171,18 @@
 
   # fixing keyring login issues by using gnome DE's
   services.gnome.gnome-keyring.enable = true;
+
+  # Cosmic specific
+  security.pam.services.login.enableGnomeKeyring = true;
   security.pam.services.cosmic-greeter.enableGnomeKeyring = true;
 
   services.system76-scheduler.enable = true;
 
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+  environment.sessionVariables = {
+    dbus-update-activation-environment = "--all";
+    # Force Zed and others to use the gnome-keyring backend
+    PYTHON_KEYRING_BACKEND = "keyring.backends.libsecret.Keyring";
+  }
 
 
   # GNOME Desktop
