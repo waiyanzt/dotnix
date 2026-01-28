@@ -15,17 +15,23 @@
   networking.networkmanager.enable = true;
   time.timeZone = "America/Los_Angeles";
 
+# ============================================================================
+  # 2. DESKTOP ENVIRONMENT & DISPLAY (GDM + GNOME + COSMIC)
   # ============================================================================
-  # 2. DESKTOP ENVIRONMENT (COSMIC) & DISPLAY
-  # ============================================================================
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager = {
-    cosmic-greeter.enable = true;
-    autoLogin = {
-      enable = true;
-      user = "ztzy";
-    };
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
+  
+  services.desktopManager.cosmic.enable = true;
+
+  # Explicitly disable auto-login to fix the Keyring issue
+  services.displayManager.autoLogin.enable = false;
+
+  # Wayland/Handshake fixes
+  services.xserver.updateDbusEnvironment = true;
+  services.dbus.packages = [ pkgs.gcr ];
 
   # Essential for Wayland/COSMIC to hand off secrets to Keyring
   services.xserver.updateDbusEnvironment = true; 
