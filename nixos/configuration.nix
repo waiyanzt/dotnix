@@ -156,6 +156,7 @@
     bitwarden-desktop
     
     # CLI Utilities
+    fastfetch
     wget
     curl
     btop
