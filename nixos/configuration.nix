@@ -15,26 +15,24 @@
   networking.networkmanager.enable = true;
   time.timeZone = "America/Los_Angeles";
 
-# ============================================================================
+  # ============================================================================
   # 2. DESKTOP ENVIRONMENT & DISPLAY (GDM + GNOME + COSMIC)
   # ============================================================================
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+    
+    # Essential for Wayland/COSMIC to hand off secrets to Keyring
+    updateDbusEnvironment = true; 
   };
   
   services.desktopManager.cosmic.enable = true;
 
-  # Explicitly disable auto-login to fix the Keyring issue
+  # Explicitly disable auto-login to fix the Keyring issue.
+  # This forces a password entry at GDM which unlocks the secret store for Zed.
   services.displayManager.autoLogin.enable = false;
 
-  # Wayland/Handshake fixes
-  services.xserver.updateDbusEnvironment = true;
-  services.dbus.packages = [ pkgs.gcr ];
-
-  # Essential for Wayland/COSMIC to hand off secrets to Keyring
-  services.xserver.updateDbusEnvironment = true; 
   services.dbus.packages = [ pkgs.gcr ]; # Helps with GUI prompts for secrets
 
   # ============================================================================
@@ -78,17 +76,10 @@
   # 5. KEYRING & SECURITY
   # ============================================================================
   services.gnome.gnome-keyring.enable = true;
+  
+  # Ensures the GDM login properly triggers the keyring unlock
+  security.pam.services.gdm.enableGnomeKeyring = true;
   security.pam.services.cosmic-greeter.enableGnomeKeyring = true;
-  # security.pam.services.ztzy.enableGnomeKeyring = true; # Optional fallback
-
-  # GNOME Services fallback (Commented out as requested)
-  /*
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
-  */
 
   # ============================================================================
   # 6. HARDWARE & DRIVERS
