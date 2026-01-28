@@ -7,6 +7,10 @@ if status is-interactive
 
     set -gx EDITOR nvim
 
+    if test -f ~/.config/fish/secrets.fish
+        source ~/.config/fish/secrets.fish
+    end
+
     alias ls='eza -A --icons=auto --group-directories-first'
 
     abbr .. 'cd ..'

@@ -5,6 +5,7 @@
 
 # Fish shell history
 .config/fish/fish_history
+.config/fish/secrets.fish
 
 # macOS
 .DS_Store
