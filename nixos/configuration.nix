@@ -142,7 +142,7 @@
     gcc
     gnumake
     valgrind
-    nodejs_20
+    nodejs
     python3
     
     # Browsers
