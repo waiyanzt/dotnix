@@ -5,6 +5,10 @@
   # 1. CORE SYSTEM & BOOT
   # ============================================================================
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   boot.loader.systemd-boot.enable = true;
@@ -59,7 +63,7 @@
     enable = true;
     nix-direnv.enable = true;
   };
-  
+    
   # ============================================================================
   # 4. ESSENTIAL SERVICES
   # ============================================================================
