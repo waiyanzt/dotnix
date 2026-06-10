@@ -152,7 +152,6 @@
     # Applications
     vesktop
     spotify
-    todoist-electron
     bitwarden-desktop
     
     # CLI Utilities
