@@ -62,11 +62,23 @@ return {
   --     -- vim.cmd.colorscheme "eva01-LCL"
   --   end,
   -- }
-   { "savq/melange-nvim",
-      lazy = false,
-      priority = 1000,
-      config = function()
-        vim.cmd.colorscheme("melange")
-      end,
-    }
+  -- {
+  --   "savq/melange-nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme("melange")
+  --   end,
+  -- },
+
+  -- Aura (Dalton Menzes)
+  {
+    "baliestri/aura-theme",
+    lazy = false,
+    priority = 1000,
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+      vim.cmd.colorscheme("aura-dark")
+    end,
+  },
 }
