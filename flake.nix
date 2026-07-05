@@ -9,9 +9,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mcp-nixos = {
-      url = "github:utensils/mcp-nixos";
-    };
+    #mcp-nixos = {
+      #url = "github:utensils/mcp-nixos";
+    #};
 
     # Do not make Noctalia follow nixpkgs: its upstream binary cache is built
     # against its own pinned nixpkgs input.
