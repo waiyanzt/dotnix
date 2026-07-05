@@ -38,6 +38,11 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  # Niri is installed alongside Plasma. SDDM will offer both sessions.
+  programs.niri.enable = true;
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   
   # Enable X11 support as fallback
   services.xserver = {
@@ -70,6 +75,7 @@
   services.openssh.enable = true;
   services.printing.enable = true;
   services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
   services.blueman.enable = true;
   
   # Audio - PipeWire
@@ -141,13 +147,15 @@
     git
     vim
     neovim
-    vscode-fhs
+    zed-editor
     ghostty
     gcc
     gnumake
     valgrind
     nodejs
     python3
+    mcp-nixos
+    xwayland-satellite
     
     # Browsers
     google-chrome

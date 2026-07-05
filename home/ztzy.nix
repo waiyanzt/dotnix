@@ -3,6 +3,7 @@
 {
   imports = [
     ./shared.nix
+    inputs.noctalia.homeModules.default
   ];
   
   home.username = "ztzy";
@@ -11,34 +12,17 @@
   
   # NixOS-specific dotfiles
   home.file = {
-    # Hyprland
-    ".config/hypr/hyprland.conf".source = ../.config/hypr/hyprland.conf;
-    ".config/hypr/hyprlock.conf".source = ../.config/hypr/hyprlock.conf;
-    ".config/hypr/hypridle.conf".source = ../.config/hypr/hypridle.conf;
-    
-    # Waybar
-    ".config/waybar/config.jsonc".source = ../.config/waybar/config.jsonc;
-    ".config/waybar/style.css".source = ../.config/waybar/style.css;
-    ".config/waybar/scripts/toggle.sh" = {
-      source = ../.config/waybar/scripts/toggle.sh;
-      executable = true;
-    };
-    
-    # Notification daemon
-    ".config/swaync/config.json".source = ../.config/swaync/config.json;
-    ".config/swaync/style.css".source = ../.config/swaync/style.css;
-    
-    # ghsotty terminal (Linux - specific settings)
+    # Ghostty terminal (Linux-specific settings)
     ".config/ghostty/config".source = ../.config/ghostty/config;
-    # Wlogout
-    ".config/wlogout/layout".source = ../.config/wlogout/layout;
-    
-    # Kanshi (monitor management)
-    ".config/kanshi/config".source = ../.config/kanshi/config;
-    
-    # Assets (for waybar, etc.)
-    "dotnix/assets/nix-snowflake.svg".source = ../assets/nix-snowflake.svg;
   };
-  
+
+  # The module installs Noctalia. Settings can be added here incrementally;
+  # Noctalia v5 keeps GUI-written overrides in its mutable state directory.
+  programs.noctalia.enable = true;
+
+  # Keep Niri's KDL configuration in the repository while Home Manager places
+  # it at ~/.config/niri/config.kdl.
+  xdg.configFile."niri/config.kdl".source = ../.config/niri/config.kdl;
+
   programs.home-manager.enable = true;
 }
