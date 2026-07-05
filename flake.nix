@@ -32,9 +32,9 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./nixos
-        {
-          nixpkgs.overlays = [ mcp-nixos.overlays.default ];
-        }
+        #{
+         # nixpkgs.overlays = [ mcp-nixos.overlays.default ];
+       # }
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
