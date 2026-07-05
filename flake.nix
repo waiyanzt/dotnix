@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, mcp-nixos, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager,  ... }: {
     # NixOS configuration (Thinkpad T14)
     nixosConfigurations.thanatos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
