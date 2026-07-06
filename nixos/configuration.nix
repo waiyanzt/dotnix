@@ -175,6 +175,7 @@
     wl-clipboard
     zip
     unzip
+    codex
     
     # Disk utilities for partitioning
     gparted

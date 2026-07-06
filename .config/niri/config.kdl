@@ -6,7 +6,7 @@ prefer-no-csd
 
 // Apply rounded corners to normal windows and clip their contents to the curve.
 window-rule {
-    geometry-corner-radius 20
+    geometry-corner-radius 2
     clip-to-geometry true
 }
 
@@ -54,7 +54,7 @@ binds {
     Mod+V { toggle-window-floating; }
 
     // Noctalia IPC: these send commands to the running Noctalia process.
-    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+A { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
     Super+Alt+L { spawn-sh "noctalia msg session lock"; }
