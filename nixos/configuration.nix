@@ -165,6 +165,7 @@
     vesktop
     spotify
     bitwarden-desktop
+    steam
     
     # CLI Utilities
     fastfetch
