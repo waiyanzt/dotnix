@@ -13,7 +13,9 @@
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Avoid tracking bleeding-edge kernels on this laptop; reboot hangs are often
+  # kernel/platform regressions, and the default kernel set is the safer baseline.
+  boot.kernelPackages = pkgs.linuxPackages;
   
   networking.hostName = "thanatos";
   networking.networkmanager.enable = true;
@@ -81,6 +83,7 @@
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   services.blueman.enable = true;
+  services.fwupd.enable = true;
   
   # Audio - PipeWire
   services.pulseaudio.enable = false;
@@ -138,6 +141,12 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.steam = {
+    enable = true;
+    protontricks.enable = true;
+    extest.enable = true;
+  };
   
   # ============================================================================
   # 5. PACKAGE INSTALLATION
@@ -160,12 +169,12 @@
     # Browsers
     google-chrome
     inputs.zen-browser.packages.${pkgs.system}.default
+    brave
     
     # Applications
     vesktop
     spotify
     bitwarden-desktop
-    steam
     zathura
     
     # CLI Utilities
@@ -175,6 +184,7 @@
     btop
     yazi
     wl-clipboard
+    pciutils
     zip
     unzip
     codex
