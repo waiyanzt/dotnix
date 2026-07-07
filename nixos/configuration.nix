@@ -33,20 +33,24 @@
   };
   
   # ============================================================================
-  # 2. DESKTOP ENVIRONMENT - KDE PLASMA 6
+  # 2. DESKTOP ENVIRONMENT - NIRI
   # ============================================================================
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Niri is installed alongside Plasma. SDDM will offer both sessions.
   programs.niri.enable = true;
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  
-  # Enable X11 support as fallback
-  services.xserver = {
+
+  services.greetd = {
     enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
+  
+  # Keep XKB configured for Wayland compositors and Xwayland apps.
+  services.xserver = {
     xkb = {
       layout = "us";
       variant = "";
@@ -139,10 +143,6 @@
   # 5. PACKAGE INSTALLATION
   # ============================================================================
   environment.systemPackages = with pkgs; [
-    # KDE Apps (minimal set)
-    kdePackages.dolphin
-    kdePackages.konsole
-    
     # Development
     git
     vim
