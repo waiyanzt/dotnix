@@ -7,6 +7,9 @@ input {
         repeat-delay 200
         repeat-rate 40
     }
+
+    // Focus windows under the pointer without scrolling the horizontal layout.
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // Draw consistent server-side window decorations where applications support it.
