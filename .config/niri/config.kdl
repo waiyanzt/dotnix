@@ -62,9 +62,13 @@ binds {
     Mod+Ctrl+Down { move-window-down; }
     Mod+Ctrl+Up { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+    Mod+Ctrl+L { move-column-right; }
     Mod+Shift+H { move-column-left; }
-    Mod+Shift+J { move-window-down; }
-    Mod+Shift+K { move-window-up; }
+    Mod+Shift+J { consume-window-into-column; }
+    Mod+Shift+K { expel-window-from-column; }
     Mod+Shift+L { move-column-right; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End { move-column-to-last; }
@@ -102,7 +106,8 @@ binds {
 
     Mod+R { switch-preset-column-width; }
     Mod+V { toggle-window-floating; }
-    Mod+F { maximize-column; }
+    // Mod+F { maximize-column; }
+    Mod+F { maximize-window-to-edges; }
     Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+F { expand-column-to-available-width; }
 
