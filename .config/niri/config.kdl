@@ -102,6 +102,9 @@ binds {
 
     Mod+R { switch-preset-column-width; }
     Mod+V { toggle-window-floating; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
 
     // Noctalia IPC: these send commands to the running Noctalia process.
     Mod+A { spawn-sh "noctalia msg panel-toggle launcher"; }
