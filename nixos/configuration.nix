@@ -166,6 +166,8 @@
     spotify
     bitwarden-desktop
     steam
+    okular
+
     
     # CLI Utilities
     fastfetch
