@@ -19,6 +19,12 @@ layout {
     gaps 1.5
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 // Apply rounded corners to normal windows and clip their contents to the curve.
 window-rule {
     geometry-corner-radius 2
