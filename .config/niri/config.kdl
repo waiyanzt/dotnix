@@ -1,6 +1,10 @@
 // Noctalia is started only in the Niri session, not in Plasma.
 spawn-at-startup "noctalia"
 
+hotkey-overlay{
+  skip-at-startup
+}
+
 input {
     keyboard {
         // Faster key repeat without making the initial delay too twitchy.
