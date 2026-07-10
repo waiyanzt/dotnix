@@ -176,6 +176,7 @@
     spotify
     bitwarden-desktop
     zathura
+    telegram-desktop
     
     # CLI Utilities
     fastfetch
