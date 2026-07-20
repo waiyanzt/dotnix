@@ -176,6 +176,7 @@
     brave
     
     # Applications
+    networkmanagerapplet
     vesktop
     spotify
     bitwarden-desktop
