@@ -19,6 +19,10 @@
   
   networking.hostName = "thanatos";
   networking.networkmanager.enable = true;
+
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openconnect
+  ];
   
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -178,7 +182,6 @@
     zathura
     telegram-desktop
     todoist-electron
-    networkmanager-openconnect
 
     # CLI Utilities
     fastfetch
