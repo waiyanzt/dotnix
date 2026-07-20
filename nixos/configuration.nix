@@ -177,7 +177,8 @@
     bitwarden-desktop
     zathura
     telegram-desktop
-    
+    todoist-electron
+
     # CLI Utilities
     fastfetch
     wget
