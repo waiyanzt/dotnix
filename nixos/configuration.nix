@@ -178,6 +178,7 @@
     zathura
     telegram-desktop
     todoist-electron
+    openconnect
 
     # CLI Utilities
     fastfetch
