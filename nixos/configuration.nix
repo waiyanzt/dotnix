@@ -19,11 +19,6 @@
   
   networking.hostName = "thanatos";
   networking.networkmanager.enable = true;
-
-  networking.networkmanager.plugins = with pkgs; [
-    networkmanager-openconnect
-  ];
-  programs.nm-applet.enable = true;
   
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -78,6 +73,23 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  home-manager.users.ztzy.programs.yazi = {
+    enable = true;
+    settings = {
+      opener.chrome = [
+        {
+          run = "${pkgs.google-chrome}/bin/google-chrome-stable %s";
+          orphan = true;
+          desc = "Open in Chrome";
+        }
+      ];
+      open.prepend_rules = [
+        { url = "*.html"; use = "chrome"; }
+        { url = "*.htm"; use = "chrome"; }
+      ];
+    };
   };
     
   # ============================================================================
