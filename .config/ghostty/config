@@ -21,7 +21,8 @@
 # # separated by equals signs.
 font-family = Lilex
 font-size = 13
-theme = Apple System Colors Light
+# theme = Apple System Colors Light
+theme = Belafonte Day
 window-padding-balance = true
 resize-overlay = never
 
