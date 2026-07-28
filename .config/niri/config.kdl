@@ -12,6 +12,11 @@ input {
         repeat-rate 40
     }
 
+    // Reverse two-finger scrolling on the trackpad without affecting the mouse.
+    touchpad {
+        natural-scroll
+    }
+
     // Focus windows under the pointer without scrolling the horizontal layout.
     focus-follows-mouse max-scroll-amount="10%"
 }
