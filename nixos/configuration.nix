@@ -211,6 +211,7 @@
     # Disk utilities for partitioning
     gparted
     popsicle
+    ventoy
   ];
   
   

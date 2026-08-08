@@ -21,8 +21,7 @@
 # # separated by equals signs.
 font-family = Lilex
 font-size = 13
-# theme = Apple System Colors Light
-theme = Belafonte Day
+theme = Cyberpunk
 window-padding-balance = true
 resize-overlay = never
 
