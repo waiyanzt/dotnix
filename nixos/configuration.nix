@@ -41,6 +41,9 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  # flatpak
+  services.flatpak.enable = true;
+
   services.greetd = {
     enable = true;
     settings = {
@@ -195,7 +198,6 @@
     zathura
     telegram-desktop
     todoist-electron
-    chatgpt
 
     # CLI Utilities
     fastfetch
