@@ -195,6 +195,7 @@
     zathura
     telegram-desktop
     todoist-electron
+    chatgpt
 
     # CLI Utilities
     fastfetch
