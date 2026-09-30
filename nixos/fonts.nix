@@ -5,6 +5,7 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       # Dev fonts
+      intel-one-mono
       nerd-fonts.zed-mono          
       nerd-fonts.iosevka-term      
       
@@ -27,4 +28,3 @@
     };
   };
 }
-
